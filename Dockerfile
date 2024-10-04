@@ -1,6 +1,9 @@
 # Use current Ubuntu LTS as the base image
 FROM ubuntu:latest
 
+# Set volume to allow change config
+VOLUME /quakejs
+
 # Update apt-get and install essential tools like curl, gpg, git, nginx, and supervisor
 RUN apt-get update && \
     apt-get install -y curl gpg git nginx supervisor
@@ -58,6 +61,3 @@ RUN chown -R quakejs:quakejs /quakejs /var/www/html
 
 # Start the supervisor daemon
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-
-# Set volume to allow change config
-VOLUME /quakejs
