@@ -39,6 +39,9 @@ If you want to run public server (eg. from Synology Nas) you need to reversed pr
 
 Refer to [quake3world](https://www.quake3world.com/q3guide/servers.html) for instructions on its usage.
 
+After first run container copy default config to mapped /config volume.
+Then you can change it and it will be used after reboot container.
+
 #### docker-compose.yml
 
 ```
@@ -53,7 +56,7 @@ services:
             - '27960:27960/udp
         image: 'crowmw/quakejs-docker:latest'
         volumes:
-            - ./quakejs:/quakejs
+            - ./quakejs/config:/config
 ```
 
 #### Building the Image
