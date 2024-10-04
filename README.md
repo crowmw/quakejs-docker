@@ -20,13 +20,13 @@ docker pull crowmw/quakejs-docker:latest
 #### and run it:
 
 ```
-docker run -d --name quakejs -e HTTP_PORT=<HTTP_PORT> -p <HTTP_PORT>:80 -p 27960:27960 crowmw/quakejs-docker:latest
+docker run -d --name quakejs -e HTTP_PORT=<HTTP_PORT> -p <HTTP_PORT>:80 -p 27960:27960 -v /quakejs/config:/config crowmw/quakejs-docker:latest
 ```
 
 #### Example:
 
 ```
-docker run -d --name quakejs -e HTTP_PORT=8080 -p 8080:80 -p 27960:27960 crowmw/quakejs-docker:latest
+docker run -d --name quakejs -e HTTP_PORT=8080 -p 8080:80 -p 27960:27960 -v /quakejs/config:/config crowmw/quakejs-docker:latest
 ```
 
 Send all you friends/coworkers the link: ex. http://localhost:8080 and start fragging ;)
