@@ -14,9 +14,6 @@ RUN mkdir -p /etc/apt/keyrings && \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
     apt-get update && apt-get install -y nodejs
 
-# Set volume to allow change config
-VOLUME /quakejs
-
 # Set the working directory for the QuakeJS server
 WORKDIR /quakejs
 
@@ -61,3 +58,6 @@ RUN chown -R quakejs:quakejs /quakejs /var/www/html
 
 # Start the supervisor daemon
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+# Set volume to allow change config
+VOLUME /quakejs
